@@ -1,0 +1,432 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+	body {
+		font-family: "Barlow";
+		font-weight: 300;
+		font-size: 18px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 1100px;
+	}
+	.bold_title {
+		font-family: "Barlow Medium";
+	}
+	h1 {
+		font-size: 32px;
+		font-weight: 300;
+	}
+
+	.disclaimerbox {
+		background-color: #eee;
+		border: 1px solid #eeeeee;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		padding: 20px;
+	}
+
+	video.header-vid {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	img.header-img {
+		height: 140px;
+		border: 1px solid black;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	img.rounded {
+		border: 1px solid #eeeeee;
+		border-radius: 10px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+	}
+
+	a:link,
+	a:visited {
+		color: #1367a7;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #208799;
+	}
+
+	td.dl-link {
+		height: 160px;
+		text-align: center;
+		font-size: 22px;
+	}
+
+	.layered-paper-big {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The top layer shadow */
+			5px 5px 0 0px #fff,
+			/* The second layer */
+			5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The second layer shadow */
+			10px 10px 0 0px #fff,
+			/* The third layer */
+			10px 10px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The third layer shadow */
+			15px 15px 0 0px #fff,
+			/* The fourth layer */
+			15px 15px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The fourth layer shadow */
+			20px 20px 0 0px #fff,
+			/* The fifth layer */
+			20px 20px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The fifth layer shadow */
+			25px 25px 0 0px #fff,
+			/* The fifth layer */
+			25px 25px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The fifth layer shadow */
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+	.paper-big {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The top layer shadow */
+
+		margin-left: 10px;
+		margin-right: 45px;
+	}
+
+
+	.layered-paper {
+		/* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+		box-shadow:
+			0px 0px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The top layer shadow */
+			5px 5px 0 0px #fff,
+			/* The second layer */
+			5px 5px 1px 1px rgba(0, 0, 0, 0.35),
+			/* The second layer shadow */
+			10px 10px 0 0px #fff,
+			/* The third layer */
+			10px 10px 1px 1px rgba(0, 0, 0, 0.35);
+		/* The third layer shadow */
+		margin-top: 5px;
+		margin-left: 10px;
+		margin-right: 30px;
+		margin-bottom: 5px;
+	}
+
+	.vert-cent {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	hr {
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+	}
+
+	figcaption {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	font-style: italic;
+	text-shadow: none;
+	color: rgb(255, 255, 255);
+	text-align: justify;
+
+	height: 20px;
+	display: table-caption; 
+	caption-side: bottom; 
+  }
+
+</style>
+
+
+<html>
+
+<head>
+	<title>Fetal Subcortical Segmentation</title>
+	<meta property="og:image" content="resources/GraphicalAbstract.png" />
+	<!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
+	<meta property="og:title" content="Subcortical Segmentation of the Fetal Brain in 3D
+	Ultrasound using Deep Learning" />
+	<meta property="og:description" content="Fetal Subcortical Segmentation" />
+
+	<!-- Get from Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src=""></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-75863369-6');
+	</script>
+</head>
+
+<body>
+	<br>
+	<center>
+		<span class=bold_title style="font-size:36px">INSightR-Net: Interpretable Neural Network for Regression using Similarity-based Comparisons to Prototypical Examples</span>
+		<table align=center width=500px>
+			<table align=center width=500px>
+				<tr>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="https://lindehesse.github.io">Linde S Hesse</a><sup>1,2</sup></span>
+						</center>
+					</td>
+					<td align=center width=100px>
+						<center>
+							<span style="font-size:24px"><a href="https://www.pmb.ox.ac.uk/person/dr-ana-namburete">Ana IL Namburete</a><sup>1,3</sup></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+			
+			<br>
+			
+			<table align=center width=800px>
+				<tr>
+					<td align=center width=800px>
+						<center>
+							<span style="font-size:12px"><sup>1</sup><a href="https://omni.cs.ox.ac.uk/"> Oxford Machine Learning in NeuroImaging (OMNI) laboratory</a>, Department of Computer Science, University of Oxford</a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+
+			<table align=center width=800px>
+				<tr>
+					<td align=center width=800px>
+						<center>
+							<span style="font-size:12px"><sup>2</sup> Institute of Biomedical Engineering, Department of Engineering Science </a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+
+
+			<table align=center width=800px>
+				<tr>
+					<td align=center width=800px>
+						<center>
+							<span style="font-size:12px"><sup>3</sup> Wellcome Centre for Integrative Neuroscience, Nuffield Department of Clinical Neuroscience, University of Oxford</a></span>
+						</center>
+					</td>
+				</tr>
+			</table>
+
+
+
+
+			<br>
+
+
+			<table align=center width=400px>
+				<tr>
+					<td align=center width=300px>
+						<center>
+							<span style="font-size:24px"><a href="https://arxiv.org/abs/2208.00457"> [preprint]</a></span>
+						</center>
+					</td>
+					<td align=center width=240px>
+						<center>
+							<span style="font-size:24px"><a href="https://github.com/lindehesse/INSightR-Net"> [code] </a></span><br>
+						</center>
+					</td>
+					</td>
+				</tr>
+			</table>
+		</table>
+	</center>
+
+	<hr>
+
+		
+	<center>
+	
+		<table align=center width=850px>
+			<tr>
+				<td width=260px>
+					<center>
+						<img class="round" style="width:800px" img src="./resources/example_prediction_methods.png" />
+					</center>
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px>
+			<tr>
+				<td>
+				</td>
+			</tr>
+		</table> 
+	</center>
+	<hr>
+
+	<table align=center width=850px>
+		<center>
+			<h1>Abstract</h1>
+		</center>
+		<tr>
+			<td>
+				<p align = 'justify'>
+				Convolutional neural networks (CNNs) have shown exceptional performance for a range of medical imaging tasks. However, conventional CNNs are not able to explain their reasoning process, therefore limiting their adoption in clinical practice. In this work, we propose an inherently interpretable CNN for regression using similarity-based comparisons (INSightR-Net) and demonstrate our methods on the task of diabetic retinopathy grading. A prototype layer incorporated into the architecture enables visualization of the areas in the image that are most similar to learned prototypes. The final prediction is then intuitively modeled as a mean of prototype labels, weighted by the similarities. We achieved competitive prediction performance with our INSightR-Net compared to a ResNet baseline, showing that it is not necessary to compromise performance for interpretability. Furthermore, we quantified the quality of our explanations using sparsity and diversity, two concepts considered important for a good explanation, and demonstrated the effect of several parameters on the latent space embeddings.
+			</p>
+			</td>
+		</tr>
+	</table>
+
+	<hr>
+
+	<center>
+		<center>
+			<h1>Methods</h1>
+		</center>
+		<table align=center width=850px>
+			<tr>
+				<td>
+				<center>
+					<p align = 'justify'>
+					We included a prototypical layer in our network architecture that computes the similarities of an image latent representation to a set of learned prototypes. All prototypes are assigned a label at the start of training, in the same range as the dataset labels. 
+					
+					The prediction of our model for a new image is then made using these similarities, and is formulated as a weighted mean of prototype labels, with the weights consisting of the similarities (<b>s</b>) and a prototype improtance score (<b>r</b>). 
+					</p>
+				</center>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<table align=center width=850px  style="background-color: #ffffff">
+			<tr>
+				<td>
+				<center>
+					<img class="round" style="width:800px" img src="./resources/final_methods.png" />
+				</center>
+				</td>
+			</tr>
+		</table>
+		<br>
+		
+
+	</center>
+
+	<hr>
+
+
+	<center>
+		<center>
+			<h1>Results</h1>
+		</center>
+		<center>
+			<h2>Example prediction</h2> 
+		</center>
+		<table align=center width=850px>
+			<tr>
+				<td width=260px>
+					<p align='justify'>
+					The prediction for an image as a weighted mean of prototype labels provides an intuitive explanation of the models' reasoning process.
+					</p>
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px style="background-color: #ffffff">
+			<tr>
+				<td width=260px>
+					<center>
+						<img class="round" style="width:600px" img src="./resources/final_results.png" />
+					</center>
+				</td>
+			</tr>
+		</table>
+		<br>
+		<center>
+			<h2>Quantitative results</h2> 
+		</center>
+		<table align=center width=850px>
+			<tr>
+				<td width=260px>
+					<p align='justify'>
+					INSightR-Net maintains baseline prediction performance, indicating it is not necessary to sacrifice performance for interpretability. Our method also obtains a lower sparsity while maintaining model diversity by replacing the Log-Similarity activation by a new function. 
+					</p>
+
+				</td>
+			</tr>
+		</table>
+		<table align=center width=850px >
+			<tr>
+				<td width=260px>
+					<center>
+						<img class="round" style="width:600px" img src="./resources/Table_results.png" />
+					</center>
+				</td>
+			</tr>
+		</table>
+
+	</table>
+	<br>
+	<center>
+		<h2>Latent Representations</h2> 
+	</center>
+	<table align=center width=850px>
+		<tr>
+			<td width=260px>
+				<p align='justify'>
+				The latent representations clearly show the effect of the applied cluster loss and the replacement of the minimum by the k-minimum. The cluster loss enforces the latent patches to be clustered around prototypes, thus encouraging each prototype to display a representative concept.
+				</p>
+
+			</td>
+		</tr>
+	</table>
+	<figure align=center width=600px >
+		<img class="round" style="width:600px" img src="./resources/Embeddings_nofuz.png" />
+		<center>
+		<figcaption style="width:600px">
+			Top row: 2D PCA of latent space embeddings () of the test set samples (stars)
+			and learned prototypes (circles). For each sample only the 5 embedings closest to a
+			prototype are shown. Bottom row: Probability density histograms of the occurrence of
+			a certain prototype in the top-5 most contributing prototypes of a test set sample.</figcaption>
+		
+		</center>
+	</figure>
+
+
+
+	<hr>
+
+
+	<table align=center width=900px>
+		<tr>
+			<td width=400px>
+				<left>
+					<center>
+						<h1>Acknowledgements</h1>
+					</center>
+					LH acknowledges the support of the UK Engineering and Physical Sciences Research Council (EPSRC) Doctoral Training Award. AN is grateful for support from the UK Royal Academy of Engineering under the Engineering for Development Research Fellowships scheme. 
+
+					<br>
+					<br>
+					This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a
+						href="http://richzhang.github.io/">Richard Zhang</a> for a <a
+						href="http://richzhang.github.io/colorization/">colorful</a> ECCV project; the code can be found
+					<a href="https://github.com/richzhang/webpage-template">here</a>.
+				</left>
+			</td>
+		</tr>
+	</table>
+
+	<br>
+</body>
+
+</html>
